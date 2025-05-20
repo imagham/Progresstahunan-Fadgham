@@ -7,51 +7,63 @@ const projects = [
   {
     nama: "Taekwondo",
     kategori: "Ekstrakurikuler",
-    pencapaian: "Naik Tingkat ke sabuk kuning strip hijau,dan juga menguasai materi baru seputar tendangan dan tangkisan.",
+    pencapaian:
+      "Naik Tingkat ke sabuk kuning strip hijau,dan juga menguasai materi baru seputar tendangan dan tangkisan.",
     progress: 80,
   },
   {
     nama: "Futsal",
     kategori: "Ekstrakurikuler",
-    pencapaian: "Menang tanding, dan menguasai beberapa teknik dasar futsal, seperti passing, dribbling, dan teknik penyerang.",    progress: 70,
+    pencapaian:
+      "Menang tanding, dan menguasai beberapa teknik dasar futsal, seperti passing, dribbling, dan teknik penyerang.",
+    progress: 70,
   },
   {
     nama: " Memanah",
     kategori: "Ekstrakurikuler",
-    pencapaian: "Telah mempelajari beberapa Teknik dasar memanah seperti mcara memegang busur,dan juga kuncian.",
+    pencapaian:
+      "Telah mempelajari beberapa Teknik dasar memanah seperti mcara memegang busur,dan juga kuncian.",
     progress: 90,
   },
   {
     nama: " Bahasa Arab",
     kategori: "Mapel",
-    pencapaian: "Telah mempelajari Bahasa arab dari kitab Bayna Yadaik kitab 2 jilid 2 dari wahdah 9 sampai wahdah 11.",
+    pencapaian:
+      "Telah mempelajari Bahasa arab dari kitab Bayna Yadaik kitab 2 jilid 2 dari wahdah 9 sampai wahdah 11.",
     progress: 75,
   },
   {
     nama: " Tahfizh",
     kategori: "Mapel",
-    pencapaian: "Telah menambah hafalan Al-Quran sebanyak 8 juz dan total hafalan yg saya miliki dalah 16 juz.",
+    pencapaian:
+      "Telah menambah hafalan Al-Quran sebanyak 8 juz dan total hafalan yg saya miliki dalah 16 juz.",
     progress: 95,
   },
   {
     nama: "Ilmu Teknologi",
     kategori: "Mapel",
-    pencapaian: "Telah Menguasai beberapa teknologi dasar seperti HTML, CSS, JavaScript, React, Tailwind, dan GIT.",
+    pencapaian:
+      "Telah Menguasai beberapa teknologi dasar seperti HTML, CSS, JavaScript, React, Tailwind, dan GIT.",
     progress: 80,
   },
   {
     nama: "Ilmu Alat",
     kategori: "Mapel",
-    pencapaian: "Telah mempelajari beberapa bab baru tentang nahwu, shorof, adab , balaghah, dan lainnya.",
+    pencapaian:
+      "Telah mempelajari beberapa bab baru tentang nahwu, shorof, adab , balaghah, dan lainnya.",
     progress: 80,
   },
   {
     nama: "Berenang",
     kategori: "Ekstrakurikuler",
-    pencapaian: "Telah mempelajari beberapa teknik dasar berenang seperti berenang seperti, berenang gaya katak, dan gaya bebas.",
+    pencapaian:
+      "Telah mempelajari beberapa teknik dasar berenang seperti berenang seperti, berenang gaya katak, dan gaya bebas.",
     progress: 90,
   },
 ];
+const goToDetail = (project) => {
+  navigate("/project-detail", { state: { project } });
+};
 
 const Home = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -192,8 +204,9 @@ const Home = () => {
               <p className="text-[#000000] text-sm md:text-base leading-relaxed">
                 Saya adalah siswa yg cukup aktif yang terus mengembangkan diri
                 melalui proyek teknologi dan kegiatan ekstrakurikuler. Saya
-                tertarik pada desain UI/UX, pengembangan web, photograpy,serta dalam bidang akademik dan saya juga
-                membangun solusi digital yang bermanfaat bagi banyak orang.
+                tertarik pada desain UI/UX, pengembangan web, photograpy,serta
+                dalam bidang akademik dan saya juga membangun solusi digital
+                yang bermanfaat bagi banyak orang.
               </p>
 
               <div className="mt-6">
@@ -302,7 +315,8 @@ const Home = () => {
               <span className="block h-1 w-16 bg-[#B6B09F] mt-3 mx-auto rounded-full" />
             </h1>
             <p className="text-[#B6B09F] mt-2 text-sm md:text-base">
-              Kumpulan pencapaian yang dikerjakan selama semester pertama dan semester kedua 🎯
+              Kumpulan pencapaian yang dikerjakan selama semester pertama dan
+              semester kedua 🎯
             </p>
           </motion.div>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -312,20 +326,23 @@ const Home = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-[#EAE4D5] p-6 rounded-2xl shadow-md border border-[#B6B09F]"
+                onClick={() => goToDetail(project)}
+                className="bg-[#EAE4D5] border border-[#B6B09F] p-6 rounded-3xl shadow-md cursor-pointer hover:shadow-lg transition"
               >
                 <h3 className="text-xl font-semibold text-[#000000] mb-2">
-                  {project.nama}
+                  {project.nama.trim()}
                 </h3>
-                <p className="text-sm text-[#B6B09F] mb-1">
-                  Kategori:{" "}
-                  <span className="font-medium">{project.kategori}</span>
+                <p className="text-[#6B6B6B] text-sm italic mb-2">
+                  {project.kategori.trim()}
                 </p>
                 <p className="text-sm text-[#B6B09F] mb-1">
-                  Pencapaian: <span className="font-medium">{project.pencapaian}</span>
+                  Pencapaian:{" "}
+                  <span className="font-medium">
+                    {project.pencapaian.trim()}
+                  </span>
                 </p>
-                <br />
-                <div className="w-full bg-[#F2F2F2] rounded-full h-3 mb-2">
+
+                <div className="w-full bg-[#F2F2F2] rounded-full h-3 mb-2 mt-4">
                   <div
                     className="bg-[#B6B09F] h-3 rounded-full transition-all"
                     style={{ width: `${project.progress}%` }}
